@@ -66,13 +66,13 @@ src/
 └── utils/          # Token storage & Protected Routes
 🚦 Getting Started
 Prerequisites
-JDK 17+
+* JDK 17+
 
-Node.js (v18+)
+* Node.js (v18+)
 
-MySQL / PostgreSQL
+* MySQL / PostgreSQL
 
-Maven
+* Maven
 
 Installation
   1.Clone the Repo
