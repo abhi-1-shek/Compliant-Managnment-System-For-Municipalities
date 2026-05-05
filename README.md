@@ -1,75 +1,86 @@
-Complaint Management System For Municipalities
+🏛️ Complaint Management System (CMS)
+A full-stack, enterprise-grade application designed to bridge the gap between citizens and administration. This system provides a secure platform for lodging grievances, tracking resolutions, and managing administrative workflows.
 
+🚀 Technical Excellence
+The project follows a Layered Architecture to ensure separation of concerns, scalability, and ease of maintenance.
 
-An intuitive, high-performance platform designed to bridge the gap between users and administrators. This system simplifies grievance reporting and ensures transparent resolution tracking through a modern, responsive interface.
+Backend (Spring Boot)
+* Layered Design: Implemented using Controller, Service, and Repository patterns.
 
-✨ Key Features
+* Security: Integrated Spring Security with JWT (JSON Web Token) for stateless authentication.
 
-* User Dashboard: Seamlessly submit complaints and track their status in real-time.
+* Data Management: Managed complex database interactions and CRUD operations using Spring Data JPA.
 
-* Admin Control Panel: Manage, categorize, and update the resolution status of all incoming reports.
+* DTO Pattern: Utilized Data Transfer Objects (DTOs) for secure and efficient data mapping between layers.
 
-* Lightning Fast UI: Built with Vite to ensure instantaneous page loads and a smooth user experience.  
+* Automation: Integrated email notification services to keep users updated on complaint status changes.
 
-* Secure Authentication: Role-based access control to protect sensitive user data.
+Frontend (React.js)
+* Dynamic UI: Built a responsive interface with role-based navigation.
 
-* Responsive Design: Fully optimized for desktop, tablet, and mobile viewing using Tailwind CSS.  
+* State Management: Handled API consumption and application state using modern React hooks and Axios.
 
-🏗️ Architecture & Tech Stack
+* Advanced Features: Implemented multi-part file uploads for evidence/attachment support.
 
-Frontend (The Visual Experience)
-* React: For building a dynamic, component-based UI.  
+🔐 Role-Based Access Control (RBAC)
+The system features three distinct portals, each secured with specific authority levels:
 
-* Vite: Serving as the next-generation frontend tool for rapid development.  
+Role,Permissions
+Citizen,"Register complaints, upload supporting documents, track real-time status."
+Staff,"Review assigned complaints, update progress, and communicate with citizens."
+Admin,"Full system oversight, user management, and advanced analytics dashboard."
 
-* Tailwind CSS: Providing a clean, utility-first design system.  
+🛠️ Key Features
+* Secure Authentication: Login/Signup powered by JWT with token expiration and refresh logic.
 
-* Babel & ESLint: Ensuring code quality and cross-browser compatibility.  
+* Complaint Lifecycle: Comprehensive flow from Pending ➡️ In-Progress ➡️ Resolved.
 
-Backend (The Engine)
-* Node.js & Express: Powering the RESTful API and business logic.
+* File Upload System: Ability to attach images or documents to complaints for better clarity.
 
-* Database: Configurable support for MySQL or MongoDB for flexible data storage.
+* Email Alerts: Automated notifications triggered during status updates or registration.
 
-* JWT: Secure token-based authentication.
+* Role-Specific Dashboards: Custom views for Admins, Staff, and Citizens to manage their specific tasks.
 
-📂 Project Roadmap
+🏗️ System Flow
+Authentication: User logs in ➡️ Backend validates credentials ➡️ JWT is generated and sent to Frontend.
 
-cms_frontend/           # React + Vite Application
-├── public/             # Static assets
-├── src/                # Components, Pages, and Hooks
-├── .env                # API Configuration
-├── tailwind.config.js  # Custom UI Theme
-└── eslint.config.js    # Linting Standards
+Complaint Submission: Citizen fills out a form (with file upload) ➡️ DTO maps data ➡️ Service layer processes ➡️ Repository persists to SQL Database.
 
-cms_backend/            # Node.js API
-├── controllers/        # Request handling logic
-├── models/             # Database schemas
-└── routes/             # API endpoint mapping
+Processing: Staff updates status via Dashboard ➡️ Backend triggers Email Notification ➡️ Citizen tracks update via their timeline.
 
-🚀 Quick Start Guide
-1. Prerequisites
-Ensure you have Node.js (v18+) and npm installed on your machine.
+📂 Project Structure
+Backend
+src/main/java/com/cms
+├── config/         # Spring Security & JWT Config
+├── controllers/    # REST Endpoints
+├── dto/            # Data Transfer Objects
+├── models/         # JPA Entities
+├── repositories/   # Database Access (Spring Data JPA)
+└── services/       # Business Logic
 
-2.Installation & Setup
-# Clone the repository
-git clone https://github.com/your-username/complaint-system.git
+Frontend
+src/
+├── components/     # Reusable UI elements
+├── pages/          # Dashboard & Form views
+├── services/       # API calling logic (Axios)
+└── utils/          # Token storage & Protected Routes
+🚦 Getting Started
+Prerequisites
+JDK 17+
 
-# Setup Frontend
-cd cms_frontend
-npm install
-npm run dev
+Node.js (v18+)
 
-The frontend will be live at http://localhost:5173.
+MySQL / PostgreSQL
 
-# Setup Backend
-cd ../cms_backend
-npm install
-npm start
+Maven
 
-🛡️ Security & Quality
-* Environment Safety: Sensitive keys are managed via .env files[cite: 1].
+Installation
+  1.Clone the Repo
+     git clone https://github.com/your-username/complaint-management-system.git
+  2.Backend Setup
+    *Update application.properties with your database credentials and JWT Secret.
+    * Run mvn spring-boot:run.
+  3.Frontend Setup
+    * Run npm install.
+    * Run npm start
 
-* Code Standards: Standardized linting via ESLint to maintain a clean codebase[cite: 1].
-
-* Encrypted Communication: Ready for SSL/TLS integration for secure data transfer.
